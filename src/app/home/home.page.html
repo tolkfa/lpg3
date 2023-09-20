@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Produtos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+< [fullscreen]="true">
+    <ion-item *ngIf="listaProdutos.length === 0">
+
+      <ion-label>Nenhum registro encotrado...</ion-label>
+    </ion-item>
+
+    <ion-item-sliding *ngfor="let prod of listaProdutos">
+      <ion-item lines="Full">
+        <ion-label>{{prod.nome}}</ion-label>
+        <ion-label slot="end">
+          {{prod.valor | currency:'BRL':'R$ '}}
+
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="warning" routerlink="/Produtos/alterar-produto/{{prod.id}}">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option color="danger" (click)="deletarProduto(proud.id)">
+          <ion-icon slot="icon-only" name="trah-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/produtos/cadastro-produto">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
